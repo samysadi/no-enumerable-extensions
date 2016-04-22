@@ -1,0 +1,38 @@
+{
+	"title": "No Enumerable Extensions",
+	"name": "no-enumerable-extensions",
+	"version": "0.0.1",
+	"description": "Addon that lets you hide your installed extensions and avoid being fingerprinted based on them",
+	"main": "index.js",
+	"author": "Samy Sadi <samy.sadi.contact@gmail.com>",
+	"homepage": "https://github.com/samysadi/no-enumerable-extensions",
+	"engines": {
+		"firefox": ">=38.0a1"
+	},
+	"license": "MPL-2.0",
+	"keywords": [
+		"jetpack", "fingerprinting", "privacy", "security"
+	],
+	"icon": "resource://@no-enumerable-extensions/data/icon-48.png",
+	"permissions": {
+		"private-browsing": true
+	},
+	"preferences": [
+		{
+			"name": "whitelist",
+			"title": "Whitelist",
+			"description": "Comma separated domains where extensions are enumerable (example: youtube.com, *.google.com)",
+			"type": "string",
+			"value": ""
+		}
+	],
+	"//" : [
+		{
+			"name": "whitelistExtensions",
+			"title": "Allowed extensions",
+			"description": "Comma separated extensions that are always enumerable (example: flash, silverlight)",
+			"type": "string",
+			"value": ""
+		}
+	]
+}

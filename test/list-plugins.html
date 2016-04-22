@@ -1,0 +1,41 @@
+<html>
+<head>
+	<title>Plugins list</title>
+</head>
+<body>
+<script language="javascript">
+	count = navigator.plugins.length;
+
+	if (count <= 0)
+		document.writeln("There is no plugins installed / enumerable.");
+
+	function displayInfo(v, plugin, recurse) {
+		if (recurse <= 0)
+			return;
+		if (typeof v == "function")
+			document.write("function");
+		else if ((typeof v == "object") || (typeof v == "array")) {
+			document.write("<table>");
+			for (k in v) {
+				vv = v[k];
+				document.write("<tr><td style=\"text-align:left;\"><b>" + k + "</b></td><td>");
+				
+				if (vv == plugin)
+					document.write("<span style=\"color:red\">RECURSE</span>");
+				else
+					displayInfo(vv, plugin, recurse - 1);
+				document.write("</td></tr>");
+			}
+			document.write("</table>");
+		} else
+			document.write(v);
+	}
+
+	for (i = 0; i < count; i++) {
+		document.write("<h2>Plugin[" + i +"]</h2><table>");
+
+		displayInfo(navigator.plugins[i], navigator.plugins[i], 3);
+	}
+</script>
+</body>
+</html>
